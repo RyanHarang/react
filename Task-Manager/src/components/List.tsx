@@ -17,22 +17,28 @@ function List({ items, heading, onSelectItem }: Props) {
     <>
       <h1>{heading}</h1>
       {getMessage()}
-      <ul className="list-group">
+      <ul className="btn-group-vertical">
         {items.map((item, index) => (
-          <li
+          <button
             className={
-              selectedIndex === index
-                ? "list-group-item active"
-                : "list-group-item"
+              selectedIndex === index ? "btn btn-secondary" : "btn btn-primary"
             }
-            key={item}
-            onClick={() => {
-              setSelectedIndex(index);
-              onSelectItem(item);
-            }}
           >
-            {item}
-          </li>
+            <li
+              className={
+                selectedIndex === index
+                  ? "list-group-item active"
+                  : "list-group-item"
+              }
+              key={item}
+              onClick={() => {
+                setSelectedIndex(index);
+                onSelectItem(item);
+              }}
+            >
+              {item}
+            </li>
+          </button>
         ))}
       </ul>
     </>
