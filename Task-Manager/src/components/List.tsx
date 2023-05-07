@@ -8,6 +8,11 @@ interface Props {
 
 function List({ items, heading, onSelectItem }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [isActive, setActive] = useState(false);
+
+  const ToggleClass = () => {
+    setActive(!isActive);
+  };
 
   const getMessage = () => {
     return items.length === 0 && <p>No items found</p>;
@@ -21,19 +26,26 @@ function List({ items, heading, onSelectItem }: Props) {
         {items.map((item, index) => (
           <button
             className={
-              selectedIndex === index ? "btn btn-secondary" : "btn btn-primary"
+              selectedIndex === index
+                ? isActive
+                  ? "btn btn-secondary"
+                  : "btn btn-primary"
+                : "btn btn-primary"
             }
           >
             <li
               className={
                 selectedIndex === index
-                  ? "list-group-item active"
+                  ? isActive
+                    ? "list-group-item active"
+                    : "list-group-item"
                   : "list-group-item"
               }
               key={item}
               onClick={() => {
                 setSelectedIndex(index);
                 onSelectItem(item);
+                ToggleClass();
               }}
             >
               {item}
