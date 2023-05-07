@@ -5,13 +5,13 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.css";
+import List from "./components/List";
 
 function App() {
   return (
     <>
       <div>
-        <Counter />
-        <Counter />
+        <List />
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function Counter() {
+function Counter({ id /*removeItem*/ }) {
   const [done, setDone] = useState(false);
   const [status, setStatus] = useState("Incomplete");
 
@@ -10,27 +10,30 @@ function Counter() {
     updateStatus();
   }
 
-  function handleClear() {
+  function handleDelete() {
     setDone(false);
-    updateStatus();
+    {
+      status == "Complete✓" ? updateStatus() : null;
+    }
   }
 
   function updateStatus() {
     {
-      status == "Incomplete" ? setStatus("Complete") : setStatus("Incomplete");
+      status == "Incomplete" ? setStatus("Complete✓") : setStatus("Incomplete");
     }
   }
 
   return (
     <>
       <button
+        key={id}
         className={!done ? "btn btn-secondary" : "btn btn-primary"}
         onClick={handleClick}
       >
-        This taks is {status}
+        {status}
       </button>
-      <button className="btn btn-secondary clear" onClick={handleClear}>
-        Clear
+      <button key={id} className="btn btn-danger clear" onClick={removeItem}>
+        Delete
       </button>
       <br />
     </>
