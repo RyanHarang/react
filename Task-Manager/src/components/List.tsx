@@ -9,10 +9,18 @@ function List() {
   const removeItem = (key: number) => {
     console.log("removeClicked at key: " + key);
     /*setList([...list.slice(0, index), ...list.slice(index + 1, list.length)]);*/
+    /*const newList: Array<typeof Counter> = [];*/
 
+    /*
+      const newList = [<Counter key={0} id={0} removeItem={removeItem} />];
+
+      for (let i = 0; i < list.length; i++) {
+      list[i].props.id !== key ? newList.concat(list[i]) : null;
+    }
+    */
+
+    /*setList(newList);*/
     setList(list.filter((obj) => obj.props.id !== key));
-
-    console.log("list: " + list);
   };
 
   const [list, setList] = useState([
