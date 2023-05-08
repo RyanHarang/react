@@ -10,15 +10,8 @@ function Counter({ id, removeItem }) {
     updateStatus();
   }
 
-  function handleDelete() {
-    setDone(false);
-    {
-      status == "Complete✓" ? updateStatus() : null;
-    }
-  }
-
   function updateStatus() {
-    console.log("updateStatus, id: " + id);
+    /*console.log("updateStatus, id: " + id);*/
     {
       status == "Incomplete" ? setStatus("Complete✓") : setStatus("Incomplete");
     }
@@ -33,7 +26,7 @@ function Counter({ id, removeItem }) {
         {status}
       </button>
       <button
-        key={-1 * id}
+        key={id}
         className="btn btn-danger clear"
         onClick={() => removeItem(id)}
       >

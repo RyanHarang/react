@@ -7,10 +7,10 @@ function List() {
 
   const removeItem = (index: number) => {
     console.log("removeClicked at " + index);
-    setItems((items) => {
-      return items.filter((_, i) => i !== index - 1);
-      /*test*/
-    });
+    setItems([
+      ...items.slice(0, index),
+      ...items.slice(index + 1, items.length),
+    ]);
   };
 
   function addItem() {
