@@ -4,23 +4,19 @@ import Counter from "./Counter";
 
 function List() {
   const [items, setItems] = useState(["0"]);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const removeItem = (key: number) => {
     console.log("removeClicked at key: " + key);
     /*setList([...list.slice(0, index), ...list.slice(index + 1, list.length)]);*/
-    setList(
-      list.filter((cont) => {
-        console.log("cont.key = " + cont.key + " and key = " + key);
-        console.log(cont.key !== key);
-        return cont.key !== key;
-      })
-    );
-    /*console.log("Items: " + items);*/
+
+    setList(list.filter((obj) => obj.props.id !== key));
+
+    console.log("list: " + list);
   };
 
   const [list, setList] = useState([
-    <Counter key={count} id={count} removeItem={removeItem} />,
+    <Counter key={0} id={0} removeItem={removeItem} />,
   ]);
 
   const addItem = () => {
