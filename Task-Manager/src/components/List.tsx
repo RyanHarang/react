@@ -9,6 +9,7 @@ function List() {
     console.log("removeClicked at " + index);
     setItems((items) => {
       return items.filter((_, i) => i !== index - 1);
+      /*test*/
     });
   };
 
