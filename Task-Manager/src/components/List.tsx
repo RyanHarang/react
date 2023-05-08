@@ -18,6 +18,7 @@ function List() {
     setItems(items.concat("0"));
   }
   function reset() {
+    /*setItems(items.map((item) => item.updateStatus()));*/
     setItems([]);
   }
   return (

@@ -2,11 +2,11 @@ import React from "react";
 import { useState } from "react";
 
 function Counter({ id, removeItem }) {
-  const [done, setDone] = useState(false);
+  const [complete, setComplete] = useState(false);
   const [status, setStatus] = useState("Incomplete");
 
   function handleClick() {
-    setDone(!done);
+    setComplete(!complete);
     updateStatus();
   }
 
@@ -20,7 +20,7 @@ function Counter({ id, removeItem }) {
   return (
     <>
       <button
-        className={!done ? "btn btn-secondary" : "btn btn-primary"}
+        className={!complete ? "btn btn-secondary" : "btn btn-primary"}
         onClick={handleClick}
       >
         {status}
