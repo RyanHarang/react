@@ -5,29 +5,26 @@ import Counter from "./Counter";
 function List() {
   const [items, setItems] = useState(["0"]);
 
-  function removeItem(/*index*/) {
-    console.log("removeClicked at " /*+ index*/);
-    /*setItems((old) => {
-      return old.filter((_, i) => i !== index);
-    });*/
-  }
+  const removeItem = (index: number) => {
+    console.log("removeClicked at " + index);
+    setItems((items) => {
+      return items.filter((_, i) => i !== index - 1);
+    });
+  };
 
   function addItem() {
     setItems(items.concat("0"));
   }
   return (
     <>
-      List Title
+      List Title <br />
       <button className="btn btn-warning reset">Reset</button>
       <button className="btn btn-success add" onClick={addItem}>
         Add Item
       </button>
       <ul>
-        {items.map((item) => (
-          <Counter
-            id={item.indexOf}
-            /*removeItem={removeItem(item.indexOf)}*/
-          ></Counter>
+        {items.map((item, index) => (
+          <Counter key={index + 1} id={index + 1} removeItem={removeItem} />
         ))}
       </ul>
     </>
