@@ -20,13 +20,14 @@ function Counter({ id, removeItem }) {
   return (
     <>
       <button
+        key={id}
         className={!complete ? "btn btn-secondary" : "btn btn-primary"}
         onClick={handleClick}
       >
         {status}
       </button>
       <button
-        key={id}
+        /*key={id}*/
         className="btn btn-danger clear"
         onClick={() => removeItem(id)}
       >

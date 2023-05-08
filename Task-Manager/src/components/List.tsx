@@ -4,22 +4,36 @@ import Counter from "./Counter";
 
 function List() {
   const [items, setItems] = useState(["0"]);
+  const [count, setCount] = useState(0);
 
-  const removeItem = (index: number) => {
-    console.log("removeClicked at " + index);
-    setItems([
-      ...items.slice(0, index),
-      ...items.slice(index + 1, items.length),
-    ]);
+  const removeItem = (key: number) => {
+    console.log("removeClicked at key: " + key);
+    /*setList([...list.slice(0, index), ...list.slice(index + 1, list.length)]);*/
+    setList(
+      list.filter((cont) => {
+        console.log("cont.key = " + cont.key + " and key = " + key);
+        console.log(cont.key !== key);
+        return cont.key !== key;
+      })
+    );
     /*console.log("Items: " + items);*/
   };
 
-  function addItem() {
-    setItems(items.concat("0"));
-  }
+  const [list, setList] = useState([
+    <Counter key={count} id={count} removeItem={removeItem} />,
+  ]);
+
+  const addItem = () => {
+    /*setItems(items.concat("0"));*/
+    setCount(count + 1);
+    console.log("Count = " + count);
+    setList(
+      list.concat(<Counter key={count} id={count} removeItem={removeItem} />)
+    );
+  };
   function reset() {
     /*setItems(items.map((item) => item.updateStatus()));*/
-    setItems([]);
+    setList([]);
   }
   return (
     <>
@@ -30,11 +44,13 @@ function List() {
       <button className="btn btn-success add" onClick={addItem}>
         Add Item
       </button>
-      <ul>
+      <br />
+      {list}
+      {/* <ul>
         {items.map((item, index) => (
           <Counter key={index} id={index} removeItem={removeItem} />
         ))}
-      </ul>
+      </ul> */}
     </>
   );
 }
