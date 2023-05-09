@@ -26,13 +26,13 @@ function Counter({ id, removeItem }) {
       >
         {status}
       </button>
-      <button
-        /*key={id}*/
+      {/* <button
+        key={id}
         className="btn btn-danger clear"
         onClick={() => removeItem(id)}
       >
         Delete
-      </button>
+      </button> */}
       <br />
     </>
   );
